@@ -13,6 +13,12 @@ class CancelToken {
     this.cancelled = true
     this._rejectPromise(new CancelError())
   }
+  
+  check() {
+    if (this.cancelled) {
+      throw new CancelError()
+    }
+  }
 }
 
 export default CancelToken
