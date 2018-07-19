@@ -15,9 +15,10 @@ class CancelToken {
   }
   
   check() {
-    if (this.cancelled) {
-      throw new CancelError()
-    }
+    return Promise.race([
+      this.promise, 
+      Promise.resolve()
+    ])
   }
 }
 
